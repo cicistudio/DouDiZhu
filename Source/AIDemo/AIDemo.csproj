@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AB7398B2-DF04-4BBF-9D6B-4F6CA5093FBF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AIDemo</RootNamespace>
+    <AssemblyName>AIDemo</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AIClass\AIBase.cs" />
+    <Compile Include="AIClass\Bomb.cs" />
+    <Compile Include="AIClass\CycleFirstOutPut.cs" />
+    <Compile Include="AIClass\FiveAndMore.cs" />
+    <Compile Include="AIClass\FourAndTwo.cs" />
+    <Compile Include="AIClass\FourAndZero.cs" />
+    <Compile Include="AIClass\JokersBomb.cs" />
+    <Compile Include="AIClass\PlaneNoWing.cs" />
+    <Compile Include="AIClass\PlaneOneWing.cs" />
+    <Compile Include="AIClass\PlaneOneWingMore.cs" />
+    <Compile Include="AIClass\PlaneTwoWing.cs" />
+    <Compile Include="AIClass\PlaneTwoWingMore.cs" />
+    <Compile Include="AIClass\Single.cs" />
+    <Compile Include="AIClass\ThreeAndOne.cs" />
+    <Compile Include="AIClass\ThreeAndTwo.cs" />
+    <Compile Include="AIClass\ThreeAndZero.cs" />
+    <Compile Include="AIClass\ThreeGroupMore.cs" />
+    <Compile Include="AIClass\TwoGroup.cs" />
+    <Compile Include="AIHelper.cs" />
+    <Compile Include="AIOptions.cs" />
+    <Compile Include="ErrorClass\FiveContinueExeception.cs" />
+    <Compile Include="ErrorClass\SingleKindExeception.cs" />
+    <Compile Include="MainClass.cs" />
+    <Compile Include="OutPutCardInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AIFrameWork\AIFrameWork.csproj">
+      <Project>{7977821E-4F44-4160-9C01-CDA02C451674}</Project>
+      <Name>AIFrameWork</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

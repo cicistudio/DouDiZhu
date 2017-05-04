@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7977821E-4F44-4160-9C01-CDA02C451674}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AIFrameWork</RootNamespace>
+    <AssemblyName>AIFrameWork</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CardCompare\CompareBase.cs" />
+    <Compile Include="CardCompare\CompFiveAndMore.cs" />
+    <Compile Include="CardCompare\CompFourAndTwo.cs" />
+    <Compile Include="CardCompare\CompFourAndZero.cs" />
+    <Compile Include="CardCompare\CompPlaneNoWing.cs" />
+    <Compile Include="CardCompare\CompPlaneOneWingMore.cs" />
+    <Compile Include="CardCompare\CompPlaneTwoWing.cs" />
+    <Compile Include="CardCompare\CompPlaneOneWing.cs" />
+    <Compile Include="CardCompare\CompPlaneTwoWingMore.cs" />
+    <Compile Include="CardCompare\CompSingle.cs" />
+    <Compile Include="CardCompare\CompThreeAndOne.cs" />
+    <Compile Include="CardCompare\CompThreeAndTwo.cs" />
+    <Compile Include="CardCompare\CompThreeAndZero.cs" />
+    <Compile Include="CardCompare\CompThreeGroupMore.cs" />
+    <Compile Include="CardCompare\CompTwoGroup.cs" />
+    <Compile Include="IBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RuleClass\RuleJokerBomb.cs" />
+    <Compile Include="RuleClass\RulePlane.cs" />
+    <Compile Include="RuleClass\RuleBase.cs" />
+    <Compile Include="RuleClass\RuleContinue.cs" />
+    <Compile Include="RuleClass\RuleFour.cs" />
+    <Compile Include="RuleClass\RuleGroup.cs" />
+    <Compile Include="RuleClass\RuleSingle.cs" />
+    <Compile Include="RuleClass\RuleThree.cs" />
+    <Compile Include="RuleEnum.cs" />
+    <Compile Include="RuleHelper.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

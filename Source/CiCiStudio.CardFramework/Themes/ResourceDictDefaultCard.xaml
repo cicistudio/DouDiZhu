@@ -1,0 +1,60 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<ImageBrush x:Key="ImageBrushClub14" ImageSource="Default/Club14.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushClub15" ImageSource="Default/Club15.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushClub3" ImageSource="Default/Club3.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushClub4" ImageSource="Default/Club4.png" TileMode="None" Stretch="Fill"/>	
+	<ImageBrush x:Key="ImageBrushClub5" ImageSource="Default/Club5.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushClub6" ImageSource="Default/Club6.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushClub7" ImageSource="Default/Club7.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushClub8" ImageSource="Default/Club8.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushClub9" ImageSource="Default/Club9.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushClub10" ImageSource="Default/Club10.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushClub11" ImageSource="Default/Club11.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushClub12" ImageSource="Default/Club12.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushClub13" ImageSource="Default/Club13.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushDiamond14" ImageSource="Default/Diamond14.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushDiamond15" ImageSource="Default/Diamond15.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushDiamond3" ImageSource="Default/Diamond3.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushDiamond4" ImageSource="Default/Diamond4.png" TileMode="None" Stretch="Fill"/>	
+	<ImageBrush x:Key="ImageBrushDiamond5" ImageSource="Default/Diamond5.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushDiamond6" ImageSource="Default/Diamond6.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushDiamond7" ImageSource="Default/Diamond7.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushDiamond8" ImageSource="Default/Diamond8.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushDiamond9" ImageSource="Default/Diamond9.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushDiamond10" ImageSource="Default/Diamond10.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushDiamond11" ImageSource="Default/Diamond11.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushDiamond12" ImageSource="Default/Diamond12.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushDiamond13" ImageSource="Default/Diamond13.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushSpader14" ImageSource="Default/Spader14.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushSpader15" ImageSource="Default/Spader15.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushSpader3" ImageSource="Default/Spader3.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushSpader4" ImageSource="Default/Spader4.png" TileMode="None" Stretch="Fill"/>	
+	<ImageBrush x:Key="ImageBrushSpader5" ImageSource="Default/Spader5.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushSpader6" ImageSource="Default/Spader6.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushSpader7" ImageSource="Default/Spader7.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushSpader8" ImageSource="Default/Spader8.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushSpader9" ImageSource="Default/Spader9.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushSpader10" ImageSource="Default/Spader10.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushSpader11" ImageSource="Default/Spader11.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushSpader12" ImageSource="Default/Spader12.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushSpader13" ImageSource="Default/Spader13.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushHeart14" ImageSource="Default/Heart14.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushHeart15" ImageSource="Default/Heart15.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushHeart3" ImageSource="Default/Heart3.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushHeart4" ImageSource="Default/Heart4.png" TileMode="None" Stretch="Fill"/>	
+	<ImageBrush x:Key="ImageBrushHeart5" ImageSource="Default/Heart5.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushHeart6" ImageSource="Default/Heart6.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushHeart7" ImageSource="Default/Heart7.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushHeart8" ImageSource="Default/Heart8.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushHeart9" ImageSource="Default/Heart9.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushHeart10" ImageSource="Default/Heart10.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushHeart11" ImageSource="Default/Heart11.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushHeart12" ImageSource="Default/Heart12.png" TileMode="None" Stretch="Fill"/>
+	<ImageBrush x:Key="ImageBrushHeart13" ImageSource="Default/Heart13.png" TileMode="None" Stretch="Fill"/>
+    <ImageBrush x:Key="ImageBrushFaceDown" ImageSource="Default/FaceDown.png" TileMode="None" Stretch="Fill"/>
+    <ImageBrush x:Key="ImageBrushBigJoker" ImageSource="Default/BigJoker.png" TileMode="None" Stretch="Fill"/>
+    <ImageBrush x:Key="ImageBrushSmallJoker" ImageSource="Default/SmallJoker.png" TileMode="None" Stretch="Fill"/>
+    <!-- 应该在此定义资源字典条目。-->
+</ResourceDictionary>

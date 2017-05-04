@@ -1,0 +1,74 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" x:Class="CiCiCard.Dialogs.GameOptionsDialog"
+    Title="游戏设置" Height="268" Width="395" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" Icon="/CiCiCard;component/Host.ico" Background="{DynamicResource ImageBrushBackground}" mc:Ignorable="d">
+    <Grid>
+    	<Button x:Name="buttonOK" Margin="159,0,155,23" VerticalAlignment="Bottom" Height="25" Content="确定">
+    		<Button.Background>
+    			<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+    				<GradientStop Color="#FFF3F3F3" Offset="0"/>
+    				<GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+    				<GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+    				<GradientStop Color="#FFC4C3C3" Offset="1"/>
+    			</LinearGradientBrush>
+    		</Button.Background>
+    	</Button>
+    	<Button x:Name="buttonCancel" Margin="0,0,69,23" VerticalAlignment="Bottom" Height="25" Content="取消" HorizontalAlignment="Right" Width="73" Click="buttonCancel_Click">
+    		<Button.Background>
+    			<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+    				<GradientStop Color="#FFF3F3F3" Offset="0"/>
+    				<GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+    				<GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+    				<GradientStop Color="#FFC4C3C3" Offset="1"/>
+    			</LinearGradientBrush>
+    		</Button.Background>
+    	</Button>
+        
+    	<CheckBox Background="#FFF4F4F4" Margin="72,28,186,0" VerticalAlignment="Top" Height="17" Content="使用AI插件PK模式">
+    		<CheckBox.Foreground>
+    			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+    				<GradientStop Color="#FFEDE610" Offset="0"/>
+    				<GradientStop Color="#FFF59E00" Offset="1"/>
+    			</LinearGradientBrush>
+    		</CheckBox.Foreground>
+    	</CheckBox>
+    	<CheckBox Background="#FFF4F4F4" Margin="72,90,158,0" Content="生成DEBUG日志模式" VerticalAlignment="Top" Height="17">
+    		<CheckBox.Foreground>
+    			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+    				<GradientStop Color="#FFEDE610" Offset="0"/>
+    				<GradientStop Color="#FFF59E00" Offset="1"/>
+    			</LinearGradientBrush>
+    		</CheckBox.Foreground>
+    	</CheckBox>
+    	<TextBox Margin="153,49,169,0" VerticalAlignment="Top" Height="26" TextWrapping="Wrap"/>
+    	<Label HorizontalAlignment="Left" Margin="84,49,0,0" VerticalAlignment="Top" Width="65" Height="26" Content="PK盘数：">
+    		<Label.Foreground>
+    			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+    				<GradientStop Color="#FFECEF0A" Offset="0"/>
+    				<GradientStop Color="#FFED930D" Offset="1"/>
+    			</LinearGradientBrush>
+    		</Label.Foreground>
+    	</Label>
+    	<Slider Margin="153,0,69,89" VerticalAlignment="Bottom"/>
+    	<Label HorizontalAlignment="Left" Margin="72,0,0,89" Width="65" Content="游戏速度：" VerticalAlignment="Bottom" Height="26">
+    		<Label.Foreground>
+    			<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+    				<GradientStop Color="#FFECEF0A" Offset="0"/>
+    				<GradientStop Color="#FFED930D" Offset="1"/>
+    			</LinearGradientBrush>
+    		</Label.Foreground>
+    	</Label>
+    	<Button x:Name="buttonHelp" Margin="72,0,0,23" VerticalAlignment="Bottom" Height="25" Content="帮助" Click="buttonCancel_Click" HorizontalAlignment="Left" Width="73">
+    		<Button.Background>
+    			<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+    				<GradientStop Color="#FFF3F3F3" Offset="0"/>
+    				<GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+    				<GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+    				<GradientStop Color="#FFC4C3C3" Offset="1"/>
+    			</LinearGradientBrush>
+    		</Button.Background>
+    	</Button>
+        
+    </Grid>
+</Window>
