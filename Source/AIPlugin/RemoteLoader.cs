@@ -2,7 +2,13 @@
 using System.Text;
 using System.Reflection;
 using System.Collections.Generic;
-
+/*************************************************************
+ * Copyright by cicistudio 2000-2017
+ * http://chengchen.cnblogs.com
+ * https://github.com/cicistudio/
+ * The Current code cannot be used in the Commercial software.
+ * Mail to me if you have any queries. cicistudio@qq.com
+ ************************************************************/
 namespace AIPlugin
 {
     public class RemoteLoader : MarshalByRefObject

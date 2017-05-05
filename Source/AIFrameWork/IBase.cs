@@ -2,7 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+/*************************************************************
+ * Copyright by cicistudio 2000-2017
+ * http://chengchen.cnblogs.com
+ * https://github.com/cicistudio/
+ * The Current code cannot be used in the Commercial software.
+ * Mail to me if you have any queries. cicistudio@qq.com
+ ************************************************************/
 namespace AIFrameWork
 {
     public enum CardPlayerType
@@ -36,7 +42,7 @@ namespace AIFrameWork
         /// <summary>
         /// 传入每回合的牌集合
         /// </summary>
-        /// <param name="cardCollection">牌集合</param>
+        /// <param name="cardCollection">牌集合 A是14 2 是15，小王是16，大王是17</param>
         void SetCardCollection(int[] cardArray);
         /// <summary>
         /// 最后三张牌会亮一下，如果自己是地主，那么需要增加到自己的牌Collection中。

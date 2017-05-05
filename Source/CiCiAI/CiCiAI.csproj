@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6C4A7662-333D-40DF-A189-EAB9F423CE59}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CiCiAI</RootNamespace>
+    <AssemblyName>CiCiAI</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\CiCiCard\bin\Debug\AIPlugin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\CiCiCard\bin\Release\AIPlugin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommClass.cs" />
+    <Compile Include="Core\ArtificialNeural.cs" />
+    <Compile Include="Core\Combine\CombineBaseInfo.cs" />
+    <Compile Include="Core\Combine\DuiZiInfo.cs" />
+    <Compile Include="Core\Combine\FeiJiInfo.cs" />
+    <Compile Include="Core\Combine\LianDuiInfo.cs" />
+    <Compile Include="Core\Combine\SanDuiInfo.cs" />
+    <Compile Include="Core\Combine\ShunZiInfo.cs" />
+    <Compile Include="Core\Combine\ZhaDanInfo.cs" />
+    <Compile Include="Core\DeepThinking.cs" />
+    <Compile Include="Core\EvaluationInfo.cs" />
+    <Compile Include="Core\Rules\DuiZiRule.cs" />
+    <Compile Include="Core\Rules\FeiJiDaiOneRule.cs" />
+    <Compile Include="Core\Rules\FeiJiDaiTwoRule.cs" />
+    <Compile Include="Core\Rules\FeiJiRule.cs" />
+    <Compile Include="Core\Rules\LianDuiRule.cs" />
+    <Compile Include="Core\Rules\PokerBase.cs" />
+    <Compile Include="Core\Rules\SanDaiTwoRule.cs" />
+    <Compile Include="Core\Rules\SanDaiOneRule.cs" />
+    <Compile Include="Core\Rules\SanDuiRule.cs" />
+    <Compile Include="Core\Rules\ShunZiRule.cs" />
+    <Compile Include="Core\Rules\ZhaDanRule.cs" />
+    <Compile Include="DdzInfo.cs" />
+    <Compile Include="MainClass.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AIFrameWork\AIFrameWork.csproj">
+      <Project>{7977821e-4f44-4160-9c01-cda02c451674}</Project>
+      <Name>AIFrameWork</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

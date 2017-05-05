@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PluginConfig>
+  <LeftPlayerAI FullName="CiCiAI.MainClass">CiCiAI.dll</LeftPlayerAI>
+  <IsMiddleAI>False</IsMiddleAI>
+  <MiddlePlayerAI FullName="AIDemo.MainClass">AIDemo.dll</MiddlePlayerAI>
+  <RightPlayerAI FullName="AIDemo.MainClass">AIDemo.dll</RightPlayerAI>
+  <IsShowAllCard>False</IsShowAllCard>
+</PluginConfig>

@@ -111,28 +111,28 @@ namespace CiCiStudio.CardFramework.CardPlayers
         /// 将牌发给不同的玩家
         /// </summary>
         /// <param name="i">发牌的第几张牌</param>
-        /// <param name="player">玩家的对象</param>
-        public static void AddToPlayer(int i,PlayerCardInfo player)
+        /// <param name="card">玩家的对象</param>
+        public static void AddCardToPlayer(int i,PlayerCardInfo card)
         {
-            player.CardIndex = m_CardCount;
+            card.CardIndex = m_CardCount;
             if (i < 51)
             {
                 switch (i % 3)
                 {
                     case 0:
-                        m_LeftPlayer.CardCollection.Add(player);
-                        player.CardPlayer = CardPlayerType.LeftPlayer;
+                        m_LeftPlayer.CardCollection.Add(card);
+                        card.CardPlayer = CardPlayerType.LeftPlayer;
                         
                         break;
                     case 1:
-                        m_MiddlePlayer.CardCollection.Add(player);
-                        player.CardPlayer = CardPlayerType.MiddlePlayer;
-                        player.CardBase.SetCard();
+                        m_MiddlePlayer.CardCollection.Add(card);
+                        card.CardPlayer = CardPlayerType.MiddlePlayer;
+                        card.CardBase.SetCard();
                         //player.CardBase.Card.SetCardSelected(true);//只有自己的牌才可以被选择。
                         break;
                     case 2:
-                        m_RightPlayer.CardCollection.Add(player);
-                        player.CardPlayer = CardPlayerType.RightPlayer;
+                        m_RightPlayer.CardCollection.Add(card);
+                        card.CardPlayer = CardPlayerType.RightPlayer;
                         m_CardCount++;
                         break;
                 }
@@ -143,13 +143,13 @@ namespace CiCiStudio.CardFramework.CardPlayers
                 switch (i)
                 {
                     case 51:
-                        player.CardIndex = -1;
+                        card.CardIndex = -1;
                         break;
                     case 52:
-                        player.CardIndex = -2;
+                        card.CardIndex = -2;
                         break;
                     case 53:
-                        player.CardIndex = -3;
+                        card.CardIndex = -3;
                         break;
                 }
             }

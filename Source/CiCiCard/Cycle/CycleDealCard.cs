@@ -26,7 +26,7 @@ namespace CiCiCard.Cycle
                 {
                     player.CardBase.SetCard();//如果满足上面两个条件就显示所有的牌。
                 }
-                PlayerHelper.AddToPlayer(i, player);
+                PlayerHelper.AddCardToPlayer(i, player);
                 animation.MoveCard(player.Location.X, player.Location.Y, TimeSpan.FromSeconds(GameOptions.DealSpeed * i));
             } 
         }
