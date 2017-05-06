@@ -53,6 +53,7 @@
     <Compile Include="Core\Combine\ZhaDanInfo.cs" />
     <Compile Include="Core\DeepThinking.cs" />
     <Compile Include="Core\EvaluationInfo.cs" />
+    <Compile Include="Core\OutputInfo.cs" />
     <Compile Include="Core\Rules\DuiZiRule.cs" />
     <Compile Include="Core\Rules\FeiJiDaiOneRule.cs" />
     <Compile Include="Core\Rules\FeiJiDaiTwoRule.cs" />

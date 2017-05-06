@@ -146,7 +146,7 @@ namespace CiCiAI.Core
         /// </summary>
         /// <param name="pokerList">当前牌组合</param>
         /// <returns></returns>
-        public static EvaluationInfo GetEvaluateSocre(List<CommClass.Poker> pokerList)
+        public static EvaluationInfo GetMaxEvaluateSocre(List<CommClass.Poker> pokerList)
         {
             DataTable evaluateDT = GetEvaluateSocreDT(pokerList);
             DataRow maxDR = evaluateDT.Select("", "Score desc")[0];
@@ -250,6 +250,262 @@ namespace CiCiAI.Core
         }
 
 
+        public static int[] GetOutPutPockers(bool isCycleFirst)
+        {
+            int[] result = null;
+            if (isCycleFirst)//如果自己是第一个，那么就按照得分最高的牌组来出。
+            {
+                OutputInfo outInfo = GetOutputInfo(DdzInfo.MyPokers);
+                //这里暂时省略出牌顺序的估分系统,比如判断3带1好，还是3带2号之类的。需要细化评估
+                //目前按照以下简单逻辑运行：
+                //1. 单牌 2.对子 3 顺子 4连顺 5飞机 6.三带一或三代二 7 炸弹 8, 火箭
+                if(outInfo.SanDuiList.Count < outInfo.DanPaiList.Count || (outInfo.FeijiList.Count>0 && outInfo.DanPaiList.Count>2) )
+                {
+                    result = outInfo.DanPaiList[0].CombinePokerArray ;
+                }
+                else if(outInfo.DanPaiList.Count ==0 && ((outInfo.SanDuiList.Count < outInfo.DuiZiList.Count) ||(outInfo.FeijiList.Count > 0 && outInfo.DuiZiList.Count > 2) ))
+                {
+                    result = outInfo.DuiZiList[0].CombinePokerArray;
+                }
+                else if(outInfo.ShunZiList.Count>0)
+                {
+                    result = outInfo.ShunZiList[0].CombinePokerArray;
+                }
+                else if(outInfo.LianDuiList.Count>0)
+                {
+                    result = outInfo.LianDuiList[0].CombinePokerArray;
+                }
+                else if(outInfo.FeijiList.Count>0)
+                {
+                    if(outInfo.DanPaiList.Count >= 2)
+                    {
+                        result = CommClass.GetPokerIntArrayFromPokerString(outInfo.FeijiList[0].CombinePokerString + "," + outInfo.DanPaiList[0].CombinePokerString + "," + outInfo.DanPaiList[1].CombinePokerString);
+                    }
+                    else if(outInfo.DuiZiList.Count>=2)
+                    {
+                        result = CommClass.GetPokerIntArrayFromPokerString(outInfo.FeijiList[0].CombinePokerString + "," + outInfo.DuiZiList[0].CombinePokerString + "," + outInfo.DuiZiList[1].CombinePokerString);
+                    }
+                    else
+                    {
+                        return outInfo.FeijiList[0].CombinePokerArray;
+                    }
+                }
+                else if(outInfo.SanDuiList.Count>0)
+                {
+                    if (outInfo.DanPaiList.Count >= 1)
+                    {
+                        result = CommClass.GetPokerIntArrayFromPokerString(outInfo.SanDuiList[0].CombinePokerString + "," + outInfo.DanPaiList[0].CombinePokerString);
+                    }
+                    else if (outInfo.DuiZiList.Count >= 1)
+                    {
+                        result = CommClass.GetPokerIntArrayFromPokerString(outInfo.SanDuiList[0].CombinePokerString + "," + outInfo.DuiZiList[0].CombinePokerString);
+                    }
+                    else
+                    {
+                        result = outInfo.SanDuiList[0].CombinePokerArray;
+                    }
+                }
+                else if(outInfo.ZhaDanList.Count>0)
+                {
+                    result = outInfo.ZhaDanList[0].CombinePokerArray;
+                }
+                else if(outInfo.HuoJianList.Count>0)
+                {
+                    result = outInfo.HuoJianList[0].CombinePokerArray;
+                }
+            }
+            else
+            {
+                //别人出牌
+
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 将当前的牌
+        /// </summary>
+        /// <returns></returns>
+        private static OutputInfo GetOutputInfo(List<CommClass.Poker> outputPokerList)
+        {
+            OutputInfo info = new OutputInfo();
+            string pockerStrng = GetMaxEvaluateSocre(outputPokerList).PokerString;
+            string[] pockerCombine = pockerStrng.Split(new char[] { '|' });
+            List<DanPaiInfo> danpaiList = new List<DanPaiInfo>();
+            List<DuiZiInfo> duiziList = new List<DuiZiInfo>();
+            List<FeiJiInfo> feijiList = new List<FeiJiInfo>();
+            List<HuoJianInfo> huojianList = new List<HuoJianInfo>();
+            List<LianDuiInfo> lianduiList = new List<LianDuiInfo>();
+            List<SanDuiInfo> sanduiList = new List<SanDuiInfo>();
+            List<ShunZiInfo> shunziList = new List<ShunZiInfo>();
+            List<ZhaDanInfo> zhadanList = new List<ZhaDanInfo>();
+            info.DanPaiList = danpaiList;
+            info.DuiZiList = duiziList;
+            info.FeijiList = feijiList;
+            info.HuoJianList = huojianList;
+            info.LianDuiList = lianduiList;
+            info.SanDuiList = sanduiList;
+            info.ShunZiList = shunziList;
+            info.ZhaDanList = zhadanList;
+            foreach(string pockers in pockerCombine)
+            {
+                //首先判断是不是火箭的情况
+                if(pockers == "JKSmall,JKBig" || pockers == "JKBig,JKSmall")
+                {
+                    //火箭
+                    HuoJianInfo huojian = new HuoJianInfo();
+                    huojian.CombinePokerString = pockers;
+                    huojian.MaxPoker = 17;
+                    huojianList.Add(huojian);
+                    continue;//跳出当前循环
+                }
+                //注意处理10是两位数的情况
+                string [] myPockersArray = pockers.Split(new char[] { ',' });
+                if (myPockersArray.Length ==1)
+                {
+                    AddToDanPanList(danpaiList, pockers);
+                }
+                else if(myPockersArray.Length ==2)
+                {
+                    if(myPockersArray[0] == myPockersArray[1])
+                    {
+                        //对子
+                        DuiZiInfo dui = new DuiZiInfo();
+                        dui.CombinePokerString = pockers;
+                        dui.MaxPoker = (int)CommClass.PockerCharToEnum(myPockersArray[0]);
+                        duiziList.Add(dui);
+                    }
+                    else
+                    {
+                        //单牌
+                        AddToDanPanList(danpaiList, pockers);
+                    }
+                }
+                else if(myPockersArray.Length ==3)
+                {
+                    if(myPockersArray[0] == myPockersArray[1] && myPockersArray[0] == myPockersArray[2])
+                    {
+                        //三对
+                        SanDuiInfo sandui = new SanDuiInfo();
+                        sandui.CombinePokerString = pockers;
+                        sandui.MaxPoker = (int)CommClass.PockerCharToEnum(myPockersArray[0]);
+                        sanduiList.Add(sandui);
+                    }
+                    else
+                    {
+                        //单牌
+                        AddToDanPanList(danpaiList, pockers);
+                    }
+                }
+                else if(myPockersArray.Length ==4 )
+                {
+                    if (myPockersArray[0] == myPockersArray[1] && myPockersArray[0] == myPockersArray[2] && myPockersArray[0] == myPockersArray[3])
+                    {
+                        //炸弹
+                        ZhaDanInfo zhadan = new ZhaDanInfo();
+                        zhadan.CombinePokerString = pockers;
+                        zhadan.MaxPoker = (int)CommClass.PockerCharToEnum(myPockersArray[0]);
+                        zhadanList.Add(zhadan);
+                    }
+                    else
+                    {
+                        //单牌
+                        AddToDanPanList(danpaiList, pockers);
+                    }
+                }
+                else if(myPockersArray.Length == 6 || myPockersArray.Length ==9)
+                {
+                    FeiJiRule rule = new FeiJiRule();
+                    if(rule.GetCombineList(CommClass.PockerStringToList(pockers)).Count>0)
+                    {
+                        //飞机
+                        FeiJiInfo feiji = new FeiJiInfo();
+                        feiji.CombinePokerString = pockers;
+                        feiji.MaxPoker = (int)CommClass.PockerCharToEnum(myPockersArray[myPockersArray.Length - 1]);
+                        feijiList.Add(feiji);
+                    }
+                    else
+                    {
+                        ShunZiRule shunrule = new ShunZiRule();
+                        if(shunrule.GetCombineList(CommClass.PockerStringToList(pockers)).Count > 0)
+                        {
+                            //顺子
+                            ShunZiInfo shunzi = new ShunZiInfo();
+                            shunzi.CombinePokerString = pockers;
+                            shunzi.MaxPoker = (int)CommClass.PockerCharToEnum(myPockersArray[myPockersArray.Length - 1]);
+                            shunziList.Add(shunzi);
+                        }
+                        else
+                        {
+                            LianDuiRule lianduiRule = new LianDuiRule();
+                            if(lianduiRule.GetCombineList(CommClass.PockerStringToList(pockers)).Count > 0)
+                            {
+                                //连对
+                                LianDuiInfo liandui = new LianDuiInfo();
+                                liandui.CombinePokerString = pockers;
+                                liandui.MaxPoker = (int)CommClass.PockerCharToEnum(myPockersArray[myPockersArray.Length - 1]);
+                                lianduiList.Add(liandui);
+                            }
+                            else
+                            {
+                                //单牌
+                                AddToDanPanList(danpaiList, pockers);
+                            }
+
+                        }
+
+                    }
+                }
+                else
+                {
+                    ShunZiRule shunrule = new ShunZiRule();
+                    if (shunrule.GetCombineList(CommClass.PockerStringToList(pockers)).Count > 0)
+                    {
+                        //顺子
+                        ShunZiInfo shunzi = new ShunZiInfo();
+                        shunzi.CombinePokerString = pockers;
+                        shunzi.MaxPoker = (int)CommClass.PockerCharToEnum(myPockersArray[myPockersArray.Length - 1]);
+                        shunziList.Add(shunzi);
+                    }
+                    else
+                    {
+                        LianDuiRule lianduiRule = new LianDuiRule();
+                        if (lianduiRule.GetCombineList(CommClass.PockerStringToList(pockers)).Count > 0)
+                        {
+                            //连对
+                            LianDuiInfo liandui = new LianDuiInfo();
+                            liandui.CombinePokerString = pockers;
+                            liandui.MaxPoker = (int)CommClass.PockerCharToEnum(myPockersArray[myPockersArray.Length - 1]);
+                            lianduiList.Add(liandui);
+                        }
+                        else
+                        {
+                            //单牌
+                            AddToDanPanList(danpaiList, pockers);
+                        }
+                    }
+                }
+            }
+            return info;
+        }
+
+        /// <summary>
+        /// 一旦确认是单牌，那么就会自动增加到list中来。
+        /// </summary>
+        /// <param name="danpaiList"></param>
+        /// <param name="pockers"></param>
+        private static void AddToDanPanList(List<DanPaiInfo> danpaiList, string pockers)
+        {
+            string[] ps = pockers.Split(new char[] { ',' });           
+            foreach(string p in ps)
+            {
+                DanPaiInfo info = new DanPaiInfo();
+                info.CombinePokerString = p;
+                info.MaxPoker = (int)CommClass.PockerCharToEnum(p);
+                danpaiList.Add(info);
+            }
+            
+        }
 
         ///// <summary>
         ///// 排列组合，递归遍历所有顺序。

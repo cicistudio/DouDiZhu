@@ -136,7 +136,7 @@ namespace CiCiAI
             {
                 max = markArray.Max();
             }
-            EvaluationInfo eval = DeepThinking.GetEvaluateSocre(DdzInfo.MyPokers);//获取插件评估分数
+            EvaluationInfo eval = DeepThinking.GetMaxEvaluateSocre(DdzInfo.MyPokers);//获取插件评估分数
             if(eval.Scores<55)
             {
                 return ScoreType.Pass;
@@ -203,17 +203,7 @@ namespace CiCiAI
         /// <param name="isCycleFirst">是否是该回合第一个出牌的人</param>
         public int[] GetOutPutCard(bool isCycleFirst)
         {
-            if(isCycleFirst)//如果是自己出牌那么将根据最优化的拆牌方法进行出牌。
-            {
-                EvaluationInfo eval = DeepThinking.GetEvaluateSocre(DdzInfo.MyPokers);//获取插件评估分数
-
-            }
-            else
-            {
-
-            }
-            
-            return null;
+            return DeepThinking.GetOutPutPockers(isCycleFirst);
         }
 
         public void About()
@@ -230,7 +220,9 @@ namespace CiCiAI
             //string pokers = CommClass.GetPokerStringFromIntArray(cardArray);
             DdzInfo.MyPokers = CommClass.PockerStringToList(pokers);
             //Test
-            return DeepThinking.GetEvaluateSocre(DdzInfo.MyPokers);
+
+            int [] output = DeepThinking.GetOutPutPockers(true);
+            return DeepThinking.GetMaxEvaluateSocre(DdzInfo.MyPokers);
         }
     }
 }

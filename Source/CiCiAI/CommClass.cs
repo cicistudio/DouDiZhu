@@ -292,5 +292,18 @@ namespace CiCiAI
             sb.Remove(sb.Length - 1, 1);
             return sb.ToString();
         }
+
+        public static int [] GetPokerIntArrayFromPokerString(string CombinePokerString)
+        {
+            string[] pokers = CombinePokerString.Split(new char[] { ',' });
+            int[] pokerArray = new int[pokers.Length];
+            int count = 0;
+            foreach (string p in pokers)
+            {
+                pokerArray[count] = (int)CommClass.PockerCharToEnum(p);
+                count++;
+            }
+            return pokerArray;
+        }
     }
 }
