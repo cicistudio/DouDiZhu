@@ -40,6 +40,7 @@ namespace CiCiAI.Core
                 List<CommClass.PokerCombineType> pokerCombineList = new List<CommClass.PokerCombineType>();
                 foreach (string s in Enum.GetNames(typeof(CommClass.PokerCombineType)))
                 {
+                    if (s == "NONE") continue;
                     pokerCombineList.Add((CommClass.PokerCombineType)Enum.Parse(typeof(CommClass.PokerCombineType), s));           
                 }
                 foreach(CommClass.PokerCombineType combineType in pokerCombineList)
@@ -147,22 +148,30 @@ namespace CiCiAI.Core
         /// <returns></returns>
         public static EvaluationInfo GetEvaluateSocre(List<CommClass.Poker> pokerList)
         {
+            DataTable evaluateDT = GetEvaluateSocreDT(pokerList);
+            DataRow maxDR = evaluateDT.Select("", "Score desc")[0];
+            EvaluationInfo eval = new EvaluationInfo() { PokerString = maxDR["CombinedPokers"].ToString(), Scores = Convert.ToInt32(maxDR["Score"]) };
+            return eval;
+        }
+
+        private static DataTable GetEvaluateSocreDT(List<CommClass.Poker> pokerList)
+        {
             DataTable evaluateDT = null;
 
-            for (int i = 1; i <= 5;i++ )
+            for (int i = 1; i <= 5; i++)//递归，循环deep = 5遍足以可以保证所有的拆牌情况
             {
-               evaluateDT = GetEvaluateDT(pokerList, evaluateDT, i);
+                evaluateDT = GetEvaluateDT(pokerList, evaluateDT, i);
             }
             //加入单牌情况
             int maxDeep = Convert.ToInt32(evaluateDT.Compute("Max(Deep)", ""));
             //DataRow[] evaluateDRs = evaluateDT.Select("Deep = " + maxDeep);
             foreach (DataRow dr in evaluateDT.Rows)
             {
-                List<CommClass.Poker> singlePokerList =CommClass.RemovePokerFromList(pokerList, dr["CombinedPokers"].ToString());              
+                List<CommClass.Poker> singlePokerList = CommClass.RemovePokerFromList(pokerList, dr["CombinedPokers"].ToString());
                 float score = 0;
 
                 //没有单牌+15分
-                if(singlePokerList.Count == 0)
+                if (singlePokerList.Count == 0)
                 {
                     score -= 15;
                 }
@@ -196,11 +205,11 @@ namespace CiCiAI.Core
 
                 //每单一张扣5分，单2 加1分，单A扣2 分，单K扣3分, 有大王，小王加4分
                 int single = singlePokerList.Where(q => q != CommClass.Poker.P2 && q != CommClass.Poker.JKBig && q != CommClass.Poker.JKSmall).Count();
-                if(single == 2)//如果只单1张牌怎不扣分，如果单两张，就扣4分
+                if (single == 2)//如果只单1张牌怎不扣分，如果单两张，就扣4分
                 {
                     score = 4;
                 }
-                else if(single ==3)//如果单3张牌，就扣8分
+                else if (single == 3)//如果单3张牌，就扣8分
                 {
                     score = 8;
                 }
@@ -208,7 +217,7 @@ namespace CiCiAI.Core
                 {
                     score = 12;
                 }
-                else if(single>4)
+                else if (single > 4)
                 {
                     single = singlePokerList.Where(q => q != CommClass.Poker.P2 && q != CommClass.Poker.A && q != CommClass.Poker.K && q != CommClass.Poker.JKBig && q != CommClass.Poker.JKSmall).Count();
                     score = single * 5; //单4张以上，每张扣5分。
@@ -221,11 +230,11 @@ namespace CiCiAI.Core
                 score = score - singlePokerList.Where(q => q == CommClass.Poker.P2).Count();
 
                 //思考的deep更少，且在少一层的情况下，就拆完了，应该给予加分奖励
-                if(evaluateDT.Select("ParentID = " + dr["ID"].ToString()).Length == 0 && Convert.ToInt32(dr["deep"]) < maxDeep)
+                if (evaluateDT.Select("ParentID = " + dr["ID"].ToString()).Length == 0 && Convert.ToInt32(dr["deep"]) < maxDeep)
                 {
-                    score = score - (maxDeep -  Convert.ToInt32(dr["deep"])) * 6;//加分奖励
+                    score = score - (maxDeep - Convert.ToInt32(dr["deep"])) * 6;//加分奖励
                 }
-                
+
                 //根据单牌，加自己的分值，把相同的拆牌分距拉开。
                 foreach (CommClass.Poker poker in singlePokerList)
                 {
@@ -237,12 +246,8 @@ namespace CiCiAI.Core
 
                 dr["Score"] = Convert.ToDouble(dr["Score"]) - score;
             }
-            DataRow maxDR = evaluateDT.Select("", "Score desc")[0];
-            EvaluationInfo eval = new EvaluationInfo() { PokerString = maxDR["CombinedPokers"].ToString(), Scores = Convert.ToInt32(maxDR["Score"]) };
-            return eval;
+            return evaluateDT;
         }
-
-
 
 
 

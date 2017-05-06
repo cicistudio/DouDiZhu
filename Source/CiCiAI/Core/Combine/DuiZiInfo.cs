@@ -22,5 +22,6 @@ namespace CiCiAI.Core.Combine
         {
             get { return 6; }
         }
+
     }
 }

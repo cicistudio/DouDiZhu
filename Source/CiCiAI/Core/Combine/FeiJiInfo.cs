@@ -22,5 +22,14 @@ namespace CiCiAI.Core.Combine
         {
             get { return 60; }
         }
+
+        /// <summary>
+        /// 多少连顺的飞机
+        /// </summary>
+        public int Count
+        {
+            get;
+            set;
+        }
     }
 }

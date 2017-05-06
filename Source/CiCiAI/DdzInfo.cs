@@ -19,9 +19,9 @@ namespace CiCiAI
         /// </summary>
         public static CommClass.PlayerSide HostSide { get; set; }
         /// <summary>
-        /// 地主是谁, 上家，下家还是自己
+        /// 自己的位置
         /// </summary>
-        public static CommClass.PlayerLocation HostLocation { get; set; }
+        public static CommClass.PlayerSide PlayerSide { get; set; }
         /// <summary>
         /// 自己的手牌
         /// </summary>

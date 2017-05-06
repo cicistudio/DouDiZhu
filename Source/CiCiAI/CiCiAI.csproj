@@ -43,8 +43,10 @@
     <Compile Include="CommClass.cs" />
     <Compile Include="Core\ArtificialNeural.cs" />
     <Compile Include="Core\Combine\CombineBaseInfo.cs" />
+    <Compile Include="Core\Combine\DanPaiInfo.cs" />
     <Compile Include="Core\Combine\DuiZiInfo.cs" />
     <Compile Include="Core\Combine\FeiJiInfo.cs" />
+    <Compile Include="Core\Combine\HuoJianInfo.cs" />
     <Compile Include="Core\Combine\LianDuiInfo.cs" />
     <Compile Include="Core\Combine\SanDuiInfo.cs" />
     <Compile Include="Core\Combine\ShunZiInfo.cs" />
@@ -72,6 +74,7 @@
       <Name>AIFrameWork</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -24,8 +24,8 @@ namespace CiCiAI
         #region 初始化各个变量的值
         private static void InitSystem()
         {
-            DdzInfo.HostLocation = CommClass.PlayerLocation.None;
             DdzInfo.HostSide = CommClass.PlayerSide.None;
+            DdzInfo.PlayerSide = CommClass.PlayerSide.None;
             if (DdzInfo.UpEvaluatePokers == null)
             {
                 DdzInfo.UpEvaluatePokers = new Dictionary<CommClass.Poker, int>();
@@ -102,17 +102,26 @@ namespace CiCiAI
             {
                 DdzInfo.HostSide = CommClass.PlayerSide.Middle;
             }
-
-
         }
 
         /// <summary>
-        /// 设置位置
+        /// 设置位置 (这个方法应该回避SetHost先触发)
         /// </summary>
         /// <param name="playType">左侧，中间，还是右侧</param>
         public void SetPlayerLocation(CardPlayerType playType)
         {
-
+            if (playType == CardPlayerType.LeftPlayer)
+            {
+                DdzInfo.PlayerSide = CommClass.PlayerSide.Left;
+            }
+            else if (playType == CardPlayerType.RightPlayer)
+            {
+                DdzInfo.PlayerSide = CommClass.PlayerSide.Right;
+            }
+            else if (playType == CardPlayerType.MiddlePlayer)
+            {
+                DdzInfo.PlayerSide = CommClass.PlayerSide.Middle;
+            }
         }
 
         /// <summary>
@@ -195,6 +204,11 @@ namespace CiCiAI
         public int[] GetOutPutCard(bool isCycleFirst)
         {
             if(isCycleFirst)//如果是自己出牌那么将根据最优化的拆牌方法进行出牌。
+            {
+                EvaluationInfo eval = DeepThinking.GetEvaluateSocre(DdzInfo.MyPokers);//获取插件评估分数
+
+            }
+            else
             {
 
             }

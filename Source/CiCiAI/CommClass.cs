@@ -31,6 +31,7 @@ namespace CiCiAI
 
         public enum PokerCombineType
         {
+            NONE = 0,
             ZhaDan = 1,  
             ShunZi = 2,
             FeiJi = 3,
@@ -212,6 +213,7 @@ namespace CiCiAI
             StringBuilder sb = new StringBuilder();
             foreach (string s in Enum.GetNames(typeof(PokerCombineType)))
             {
+                if (s == "NONE") continue;
                 sb.Append((int)Enum.Parse(typeof(PokerCombineType), s));
                 sb.Append(",");
             }

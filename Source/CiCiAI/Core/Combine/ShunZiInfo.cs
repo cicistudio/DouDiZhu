@@ -22,5 +22,10 @@ namespace CiCiAI.Core.Combine
         {
             get { return 55; }
         }
+
+        /// <summary>
+        /// 多少连顺
+        /// </summary>
+        public int Count { get;set; }
     }
 }
